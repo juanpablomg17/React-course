@@ -58,7 +58,7 @@ export default class Menu extends Component {
                     {menu}
                 </div>
                 <div className="row">
-                  <div  className="col-12 col-md-5 mt-5">
+                  <div  className="col-12">
                     {this.renderDish(this.state.selectedDish)}
                   </div>
                 </div>
