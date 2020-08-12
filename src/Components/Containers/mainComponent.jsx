@@ -7,6 +7,7 @@ import Header from '../HeaderComponent/HeaderComponent';
 import Footer from '../footer/FooterComponent';
 import Home from '../HomeComponent/HomeComponent';
 import Contact from '../contact/ContactComponent';
+import About from '../About/About';
 
 // DATA
 import { DISHES } from '../data/dishes';
@@ -39,13 +40,29 @@ class Main extends Component {
         <Home dish={this.state.dishes.filter((dish) => dish.featured)[0]} promotion={this.state.promotions.filter((promo) => promo.featured)[0]}  leader={this.state.leaders.filter((lead) => lead.featured)[0]} />
       );
     }
+
+    const DishWithId = ({match}) => {
+      return(
+          <Details dish={this.state.dishes.filter((dish) => dish.id === parseInt(match.params.dishId,10))[0]} 
+            comments={this.state.comments.filter((comment) => comment.dishId === parseInt(match.params.dishId,10))} />
+      );
+    };
+
+    const AboutPage = () => {
+      return(
+          <About leaders={this.state.leaders} />
+      );
+
+    }
+    
     return (
       <div>
         <Header/>
             <Switch>
               <Route path="/home" component={HomePage}/>
               <Route exact path="/menu" component={() => <Menu dishes={this.state.dishes}/>}/>
-
+              <Route path="/menu/:dishId" component={DishWithId}/>
+              <Route exact path="/aboutus" component={AboutPage}/>
               <Route exact path="/contactus" component={Contact}/>
 
 
