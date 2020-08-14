@@ -60,6 +60,9 @@ class Main extends Component {
         <Header/>
             <Switch>
               <Route path="/home" component={HomePage}/>
+          <Route exact path="/">
+            {HomePage ? <Redirect to="/home" /> : <HomePage />}
+          </Route>
               <Route exact path="/menu" component={() => <Menu dishes={this.state.dishes}/>}/>
               <Route path="/menu/:dishId" component={DishWithId}/>
               <Route exact path="/aboutus" component={AboutPage}/>
