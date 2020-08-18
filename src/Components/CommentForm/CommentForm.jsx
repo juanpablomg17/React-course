@@ -5,10 +5,10 @@ import { Control, LocalForm, Errors } from 'react-redux-form';
 
 
 
-const required = (val) => val && val.length;
+
 const maxLength = (len) => (val) => !(val) || (val.length <= len);
 const minLength = (len) => (val) => val && (val.length >= len);
-const isNumber = (val) => !isNaN(Number(val));
+
 
 export default class CommentForm extends Component {
 
@@ -74,11 +74,11 @@ export default class CommentForm extends Component {
                             </Row>
 
                             <Row className="form-group">
-                                <Label htmlFor="yourName" md={12}>
+                                <Label htmlFor="author" md={12}>
                                     Your Name
                                 </Label>
                                 <Col md={12}>
-                                    <Control.text model=".yourName" name="yourName" id="yourName" className="form-control"
+                                    <Control.text model=".author" name="author" id="author" className="form-control"
                                         validators={{
                                             required, minLength: minLength(3), maxLength: maxLength(15)
                                         }}
@@ -86,7 +86,7 @@ export default class CommentForm extends Component {
 
                                     <Errors
                                         className="text-danger"
-                                        model=".yourName"
+                                        model=".author"
                                         show="touched"
                                         messages={{
                                             

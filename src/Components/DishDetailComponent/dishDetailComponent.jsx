@@ -35,7 +35,7 @@ function RenderDish({dish}) {
 
 
 
-function RenderComments({comments}){
+function RenderComments({comments, addComment, dishId}){
 
     
        if (comments != null) {
@@ -45,7 +45,7 @@ function RenderComments({comments}){
             return(
                 <li key={comments.id} >
                     <div>
-                        <p>{comments.comment}</p>
+            <p>{comments.comment}  --------    Stars: {comments.rating}</p>
                         <p>--{comments.author},
                         {new Intl.DateTimeFormat('en-US', { year: 'numeric', month: 'short', day: '2-digit'}).format(new Date(Date.parse(comments.date)))}</p>
                     </div>
@@ -60,9 +60,9 @@ function RenderComments({comments}){
                     <ul className="list-unstyled">
                         {list}
                     </ul>
-                    <CommentForm>
+                    <CommentForm dishId={dishId} addComment={addComment}/>
 
-                    </CommentForm>
+                    
                 </div>
         )
     }
@@ -107,7 +107,8 @@ export default function Details(props) {
                             <RenderDish dish={props.dish}/>           
 
                             <RenderComments 
-                                comments={props.comments}/>
+                                comments={props.comments} addComment={props.addComment}
+                                dishId={props.dish.id}/>
                     </div>
                 </div>
 
@@ -150,8 +151,11 @@ class CommentForm extends Component {
     }
 
     handleSubmit = (values) => {
+        this.toggleMOdal();
 
-        alert("Current State is: " + JSON.stringify(values));
+        this.props.addComment(this.props.dishId, values.rating, values.author, values.comment);
+
+      
     }
 
 
@@ -193,11 +197,11 @@ class CommentForm extends Component {
                             </Row>
 
                             <Row className="form-group">
-                                <Label htmlFor="yourName" md={12}>
+                                <Label htmlFor="author" md={12}>
                                     Your Name
                                 </Label>
                                 <Col md={12}>
-                                    <Control.text model=".yourName" name="yourName" id="yourName" className="form-control"
+                                    <Control.text model=".author" name="author" id="author" className="form-control"
                                         validators={{
                                             required, minLength: minLength(3), maxLength: maxLength(15)
                                         }}
@@ -205,7 +209,7 @@ class CommentForm extends Component {
 
                                     <Errors
                                         className="text-danger"
-                                        model=".yourName"
+                                        model=".author"
                                         show="touched"
                                         messages={{
                                             
