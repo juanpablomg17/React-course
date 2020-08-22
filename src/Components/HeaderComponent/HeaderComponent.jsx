@@ -9,7 +9,7 @@ export default class Header extends Component {
         super(props);
         this.state = {
             isNavOpen: false,
-            isModelOpen: false
+        
         };
 
         this.toggleNav = this.toggleNav.bind(this);
@@ -21,18 +21,8 @@ export default class Header extends Component {
         })
     }
 
-    toggleMOdal = () => {
-        this.setState({
-            isModelOpen: !this.state.isModelOpen
-        })
-    }
 
-    handleLogin = (event) =>{
-        this.toggleMOdal();
-        alert("Username: "+this.username.value + "Password: "+ this.password.value+ "Remember: "+ this.remember.checked)
-
-        event.preventDefatul();
-    }
+ 
 
     render() {
 
@@ -45,25 +35,25 @@ export default class Header extends Component {
                         <Collapse isOpen={this.state.isNavOpen} navbar>
                             <Nav navbar style={{ textAlign: "center" }}>
                                 <NavItem>
-                                    <NavLink className="nav-link"
+                                    <div className="nav-link"
                                         to="/home">
                                         <span className="fa fa-home fa-lg">Home</span>
-                                    </NavLink>
+                                    </div>
                                 </NavItem>
                                 <NavItem>
-                                    <NavLink className="nav-link"
+                                    <div className="nav-link"
                                         to="/aboutus">
                                         <span className="fa fa-info fa-lg">About Us</span>
-                                    </NavLink>
+                                    </div>
                                 </NavItem>
                                 <NavItem>
-                                    <NavLink className="nav-link"
+                                    <div className="nav-link"
                                         to="/menu">
                                         <span className="fa fa-list fa-lg">Menu</span>
-                                    </NavLink>
+                                    </div>
                                 </NavItem>
                                 <NavItem>
-                                    <NavLink className="nav-link"
+                                    <div className="nav-link"
                                         to="contactus">
                                         <span className="fa fa-address-card fa-lg">Contact Us</span>
                                     </NavLink>

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Breadcrumb, BreadcrumbItem, Button, FormGroup, Label, Input, Col, Row, }
+import { Breadcrumb, BreadcrumbItem, Button, Label, Col, Row, }
     from 'reactstrap';
 import { Link } from 'react-router-dom';
 
@@ -17,12 +17,7 @@ const validEmail = (val) => /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(val
 
 
 export default class Contact extends Component {
-
-    constructor(props) {
-        super(props);
-
-    }
-
+    
 
 
 
